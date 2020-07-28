@@ -1,20 +1,5 @@
 #include<stdio.h>
 
-  int circular_sum(int a[],int n)
-  {
-    int total=0;
-    int a1=kadane(a,n);
-  for (int i=0;i<n;i++)
-  {
-    total=total+a[i];
-    a[i]=-a[i];
-  }
-  int circular_total=kadane(a,n);
-  total=total+circular_total;
-  return (total>a1) ? total:a1;
-  }
-
-
   int kadane(int a[] , int n)
   {
   int sum=0,sum1=0;
@@ -29,6 +14,20 @@
   return sum1;
   }
   
+int circular_sum(int a[],int n)
+  {
+    int total=0;
+    int a1=kadane(a,n);
+  for (int i=0;i<n;i++)
+  {
+    total=total+a[i];
+    a[i]=-a[i];
+  }
+  int circular_total=kadane(a,n);
+  total=total+circular_total;
+  return (total>a1) ? total:a1;
+  }
+
 int main()
 {      
   int total=0,x=0,sum1=0;
